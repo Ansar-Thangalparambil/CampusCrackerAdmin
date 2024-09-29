@@ -1,0 +1,49 @@
+.logbtn button{
+    background-color: #382F26;
+    color: #FFEFCD;
+    font-size: 16px;
+}
+
+.logbtn button:hover{
+    color: #382F26;
+    background-color: #FFEFCD;
+}
+.box{
+    /* border:3px solid #382F26; */
+    box-shadow: 0px 0px 7px 0px;
+    border-radius: 15px;
+    /* padding: 61px; */
+}
+.total {
+    height:100vh;
+}
+
+/* danish */
+.ip-fields{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 21px;
+    padding:10px 15px;
+    width: 100%;
+    background-color: #FFEFCD;
+    color: #382F26;
+}
+
+input{
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+}
+
+.ip-fields:focus-within {
+    
+     border: 2px solid #382F26;
+    
+}
+
+.logbtn button{
+    /* border-radius: 14%; */
+    padding-top: 10px;
+    /* width: 100%; */
+    border: none;
+}

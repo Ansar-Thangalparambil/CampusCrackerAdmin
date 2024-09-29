@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AdminHome from './Pages/AdminHome';
+import Login from './Pages/Login';
+import LandingPage from './Pages/LandingPage';
+import PoTFormulas from './Subtopics/PoTFormulas';
+import PoTQuestions from './Subtopics/PoTQuestions';
+import SubtopicsHome from './Pages/SubtopicsHome';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+
+      <Routes>
+        <Route path='/adminhome' element={<AdminHome/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/subtopicshome' element={<SubtopicsHome/>}/>
+        <Route path='/potformulas' element={<PoTFormulas/>}/>
+        <Route path='/potquestions' element={<PoTQuestions/>}/>
+        
+        
+      </Routes>
+
+   </>
   );
 }
 
