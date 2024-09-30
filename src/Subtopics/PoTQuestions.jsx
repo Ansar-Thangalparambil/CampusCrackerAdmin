@@ -2,22 +2,26 @@ import React from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 
 function PoTQuestions() {
+  
+  const [qstn,setQstn] = useState({
+    question:"",
+    optiona:"",
+    optionb:"",
+    optionc:"",
+    optiond:"",
+    answer:"",
+    explanation:""
+    
+  })
+  console.log(qstn);
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const [selectedOption,setSelectedOption] = useState('')
-
-    const handleChange = (e)=>{
-        setSelectedOption(e.target.value);
-    }
-
-    const [qstn,setQstn] = useState({
+    const handleCancel = ()=>{
+      setQstn({
         question:"",
         optiona:"",
         optionb:"",
@@ -25,27 +29,34 @@ function PoTQuestions() {
         optiond:"",
         answer:"",
         explanation:""
+      })
+    }
 
-    })
-    console.log(qstn);
+    const handleClose = () => {
+      if(!qstn.question && !qstn.optiona && !qstn.optionb && !qstn.optionc && !qstn.optionc && !qstn.optiond && !qstn.answer && !qstn.explanation){
+        setShow(false)
+      }
+      else{
+        const confMsg = window.confirm("Discard changes?")
+        if(confMsg){
+          handleCancel()
+          setShow(false)
+        }
+      }
+    };
     
+    const handleShow = () => setShow(true);
 
+    
+    
   return (
     <>
-        <div className="addnewbtn">
-            <Button className='' onClick={handleShow}>
-                Add<i class="fa-solid fa-plus"></i>
-            </Button>
-        </div>
-        <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-        animation={true}
-        centered
-        size="lg"
-      >
+      <div className="addnewbtn">
+          <Button className='' onClick={handleShow}>
+              Add<i class="fa-solid fa-plus"></i>
+          </Button>
+      </div>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} animation={true} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add a new question</Modal.Title>
         </Modal.Header>
@@ -53,7 +64,7 @@ function PoTQuestions() {
           <div className="totalform row">
             <div className="col-md-6">
                 <div >
-                    <input type="text" id='question' className='form-control' placeholder='Enter question' value={qstn.question} onChange={(e)=>setQstn({...qstn,question:e.target.value})}/>
+                    <textarea name='question' id='question' className='form-control' placeholder='Enter question' value={qstn.question} onChange={(e)=>setQstn({...qstn,question:e.target.value})}/>
                 </div>
                 <div className="options">
                     <div className="option-one d-flex gap-2">
@@ -78,32 +89,33 @@ function PoTQuestions() {
             <div className="col-md-6">
                 <div className='d-flex gap-3'>
                     <div className=' d-flex align-items-center'>
-                        <p className='m-0'>Correct Answer</p>
+                        <p className='m-0'>Choose the correct answer</p>
                     </div>
-                <Dropdown>
-                    <Dropdown.Toggle variant="" className='border border-dark rounded-1 py-0 p-1' id="dropdown-basic">
+                {/* <Dropdown onSelect={handleChange}> */}
+                    {/* <Dropdown.Toggle variant="" className='border border-dark rounded-1 py-0 p-1' id="dropdown-basic"> */}
                     {/* <i class="fa-solid fa-caret-down"></i> */}
-                    </Dropdown.Toggle>
+                    {/* </Dropdown.Toggle> */}
 
-                    <Dropdown.Menu value={qstn.answer} onChange={(e)=>setQstn({...qstn,answer:e.target.value})}>
-                        <Dropdown.Item href="#/action-1" value={"optiona"}>Option A</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2" value={"optionb"}>Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3" value={"optionc"}>Something else</Dropdown.Item>
-                        <Dropdown.Item href="#/action-4" value={"optiond"}>Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                    <select value={qstn.answer}  onChange={(e)=>setQstn({...qstn,answer:e.target.value})}>
+                        <option href="#/action-1" value="">Choose one</option>
+                        <option href="#/action-1" value={qstn.optiona}>{qstn.optiona}</option>
+                        <option href="#/action-2" value={qstn.optionb}>{qstn.optionb}</option>
+                        <option href="#/action-3" value={qstn.optionc}>{qstn.optionc}</option>
+                        <option href="#/action-4" value={qstn.optiond}>{qstn.optiond}</option>
+                    </select>
+                {/* </Dropdown> */}
                 </div>
                 <div>
-                    <textarea name="explanation" id="explanation" placeholder='Write the explanation here.' className='form-control' rows={6} value={qstn.explanation}></textarea>
+                    <textarea name="explanation" id="explanation" placeholder='Write the explanation here.' className='form-control' rows={7} value={qstn.explanation} onChange={(e)=>setQstn({...qstn,explanation:e.target.value})}></textarea>
                 </div>
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary" onClick={handleCancel}>
+            Clear all
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary">Add</Button>
         </Modal.Footer>
       </Modal>
     </>
