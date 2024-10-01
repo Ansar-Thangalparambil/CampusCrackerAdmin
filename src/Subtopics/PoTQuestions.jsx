@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { addQuestionAPI } from '../Services/allAPI';
 // import Dropdown from 'react-bootstrap/Dropdown';
 
 function PoTQuestions() {
@@ -16,9 +17,11 @@ function PoTQuestions() {
     explanation:""
     
   })
-  console.log(qstn);
+  // console.log(qstn);
+  
+  const [show, setShow] = useState(false);
 
-    const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
 
     const handleCancel = ()=>{
       setQstn({
@@ -45,7 +48,33 @@ function PoTQuestions() {
       }
     };
     
-    const handleShow = () => setShow(true);
+  //Function to add question
+  const addQuestion = async(e)=>{
+    e.preventDefault()
+    const {question,optiona,optionb,optionc,optiond,answer,explanation} = qstn
+    if(!question || !optiona || !optionb || !optionc || !optionc || !optiond || !answer || !explanation){
+      alert("Please fill all the fields!")
+    }
+    else{
+      try{
+        const result = await addQuestionAPI(qstn)
+      console.log(result);
+
+      if(result.status === 200){
+        alert('Question added successfully.')
+      }
+      else{
+        alert(`${result.response.data}`)
+      }
+    }catch(err){
+      console.log(`Request failed due to ${err}`);
+      alert('Oops something went wrong!')
+      
+    }
+      
+    }
+  }
+
 
     
     
@@ -112,10 +141,10 @@ function PoTQuestions() {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCancel}>
+          <Button className='me-auto' variant="secondary" onClick={handleCancel}>
             Clear all
           </Button>
-          <Button variant="primary">Add</Button>
+          <Button variant="primary" onClick={addQuestion}>Add</Button>
         </Modal.Footer>
       </Modal>
     </>
