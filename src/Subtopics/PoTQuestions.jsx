@@ -8,14 +8,16 @@ import { addQuestionAPI } from '../Services/allAPI';
 function PoTQuestions() {
   
   const [qstn,setQstn] = useState({
+    section_name:"Arithmetic_aptitude",
+    category:"PoT",
     question:"",
-    optiona:"",
-    optionb:"",
-    optionc:"",
-    optiond:"",
+    option_a:"",
+    option_b:"",
+    option_c:"",
+    option_d:"",
     answer:"",
     explanation:""
-    
+            
   })
   // console.log(qstn);
   
@@ -25,18 +27,20 @@ function PoTQuestions() {
 
     const handleCancel = ()=>{
       setQstn({
+        section_name:"Arithmetic_aptitude",
+        category:"PoT",
         question:"",
-        optiona:"",
-        optionb:"",
-        optionc:"",
-        optiond:"",
+        option_a:"",
+        option_b:"",
+        option_c:"",
+        option_d:"",
         answer:"",
         explanation:""
       })
     }
 
     const handleClose = () => {
-      if(!qstn.question && !qstn.optiona && !qstn.optionb && !qstn.optionc && !qstn.optionc && !qstn.optiond && !qstn.answer && !qstn.explanation){
+      if(!qstn.question && !qstn.option_a && !qstn.option_b && !qstn.option_c && !qstn.option_d && !qstn.answer && !qstn.explanation){
         setShow(false)
       }
       else{
@@ -51,8 +55,8 @@ function PoTQuestions() {
   //Function to add question
   const addQuestion = async(e)=>{
     e.preventDefault()
-    const {question,optiona,optionb,optionc,optiond,answer,explanation} = qstn
-    if(!question || !optiona || !optionb || !optionc || !optionc || !optiond || !answer || !explanation){
+    const {question,option_a,option_b,option_c,option_d,answer,explanation} = qstn
+    if(!question || !option_a || !option_b || !option_c || !option_d || !answer || !explanation){
       alert("Please fill all the fields!")
     }
     else{
@@ -62,6 +66,7 @@ function PoTQuestions() {
 
       if(result.status === 200){
         alert('Question added successfully.')
+        handleCancel()
       }
       else{
         alert(`${result.response.data}`)
@@ -74,10 +79,7 @@ function PoTQuestions() {
       
     }
   }
-
-
-    
-    
+ 
   return (
     <>
       <div className="addnewbtn">
@@ -98,19 +100,19 @@ function PoTQuestions() {
                 <div className="options">
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>A</span>
-                        <input type="text" className='form-control' placeholder='Option A' value={qstn.optiona} onChange={(e)=>setQstn({...qstn,optiona:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option A' value={qstn.option_a} onChange={(e)=>setQstn({...qstn,option_a:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>B</span>
-                        <input type="text" className='form-control' placeholder='Option B' value={qstn.optionb} onChange={(e)=>setQstn({...qstn,optionb:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option B' value={qstn.option_b} onChange={(e)=>setQstn({...qstn,option_b:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>C</span>
-                        <input type="text" className='form-control' placeholder='Option C' value={qstn.optionc} onChange={(e)=>setQstn({...qstn,optionc:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option C' value={qstn.option_c} onChange={(e)=>setQstn({...qstn,option_c:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>D</span>
-                        <input type="text" className='form-control' placeholder='Option D'value={qstn.optiond} onChange={(e)=>setQstn({...qstn,optiond:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option D'value={qstn.option_d} onChange={(e)=>setQstn({...qstn,option_d:e.target.value})}/>
                     </div>
                 </div>
             </div>
@@ -127,10 +129,10 @@ function PoTQuestions() {
 
                     <select value={qstn.answer}  onChange={(e)=>setQstn({...qstn,answer:e.target.value})}>
                         <option href="#/action-1" value="">Choose one</option>
-                        <option href="#/action-1" value={qstn.optiona}>{qstn.optiona}</option>
-                        <option href="#/action-2" value={qstn.optionb}>{qstn.optionb}</option>
-                        <option href="#/action-3" value={qstn.optionc}>{qstn.optionc}</option>
-                        <option href="#/action-4" value={qstn.optiond}>{qstn.optiond}</option>
+                        <option href="#/action-1" value={qstn.option_a}>{qstn.option_a}</option>
+                        <option href="#/action-2" value={qstn.option_b}>{qstn.option_b}</option>
+                        <option href="#/action-3" value={qstn.option_c}>{qstn.option_c}</option>
+                        <option href="#/action-4" value={qstn.option_d}>{qstn.option_d}</option>
                     </select>
                 {/* </Dropdown> */}
                 </div>
