@@ -12,13 +12,25 @@ function AdminHome() {
           <h3>Materials</h3>
         </div>
         <div className='gen-verb d-flex justify-content-around'>
-         <Link to={'/subtopicshome'} >
+          {/* When you want to pass data along with the route, you can use the state prop. This method is useful when you have complex data (like objects or arrays) that you don’t want to serialize in the URL.
+          here we are passing a state in link to subtopicshome.jsx page  */}
+         <Link to={'/subtopicshome'} state={{data:{
+          route1:'/potformulas',
+          route1Name:'Problems On Train - Formulas',
+          route2:'/potquestions',
+          route2Name:'Problems on Train - Questions'
+         }}}>
             <div className="general-sec">
               <h4>General Aptitude</h4>
             </div>
          </Link>
   
-          <Link>
+          <Link to={'/subtopicshome'} state={{data:{
+          route1:'/potformulas',
+          route1Name:'Problems On Train - Formulas',
+          route2:'/potquestions',
+          route2Name:'Problems on Train - Questions'
+         }}}>
             <div className="verbal-sec">
               <h4>Verbal Reasoning</h4>
     
