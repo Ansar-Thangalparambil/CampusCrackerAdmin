@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { addQuestionAPI } from '../Services/allAPI';
+import { addQuestionAPI, getArithQuestionAPI } from '../Services/allAPI';
 // import Dropdown from 'react-bootstrap/Dropdown';
 
 function PoTQuestions() {
@@ -25,7 +25,7 @@ function PoTQuestions() {
 
   const handleShow = () => setShow(true);
 
-    const handleCancel = ()=>{
+  const handleCancel = ()=>{
       setQstn({
         section_name:"Arithmetic_aptitude",
         category:"PoT",
@@ -39,7 +39,7 @@ function PoTQuestions() {
       })
     }
 
-    const handleClose = () => {
+  const handleClose = () => {
       if(!qstn.question && !qstn.option_a && !qstn.option_b && !qstn.option_c && !qstn.option_d && !qstn.answer && !qstn.explanation){
         setShow(false)
       }
@@ -51,7 +51,11 @@ function PoTQuestions() {
         }
       }
     };
-    
+  
+  const [potQuestions, setPotQuestions] = useState([])  
+
+  const [qstnAdded, setQstnAdded] = useState(false)
+
   //Function to add question
   const addQuestion = async(e)=>{
     e.preventDefault()
@@ -66,6 +70,7 @@ function PoTQuestions() {
 
       if(result.status === 200){
         alert('Question added successfully.')
+        setQstnAdded(!qstnAdded)
         handleCancel()
       }
       else{
@@ -79,10 +84,29 @@ function PoTQuestions() {
       
     }
   }
+
+  //function to get arith pot questions
+  const getPotQuestions = async()=>{
+    const result = await getArithQuestionAPI();
+    console.log(result.data);
+    setPotQuestions(result.data)
+  }
+
+  //for initially rendering the data when the page loads.
+  useEffect(()=>{
+    getPotQuestions();
+  },[],[qstnAdded])
+
+  //for re-rendering the data when a new question is added.
+  useEffect(()=>{
+    getPotQuestions();
+  },[qstnAdded])
+
+  //for deleting the question
  
   return (
     <>
-      <div className="addnewbtn">
+      <div className="addnewbtn d-flex justify-content-end ">
           <Button className='' onClick={handleShow}>
               Add<i class="fa-solid fa-plus"></i>
           </Button>
@@ -149,6 +173,49 @@ function PoTQuestions() {
           <Button variant="primary" onClick={addQuestion}>Add</Button>
         </Modal.Footer>
       </Modal>
+
+     {potQuestions?.length > 0?(
+      potQuestions.map((item,index)=>(
+        <div className="container-fluid" key={index}>
+          <div className="">
+            <span>{index+1}</span>
+            <span>{item.question}</span>
+          </div>
+          <div className="">
+            <ol type='A'>
+              <li>{item.option_a}</li>
+              <li>{item.option_b}</li>
+              <li>{item.option_c}</li>
+              <li>{item.option_d}</li>
+            </ol>
+          </div>
+          <div className="">
+            <div className="">
+              {item.answer}
+            </div>
+            <div className="">
+              {item.explanation}
+            </div>
+            <div className="d-flex">
+              <div className="">
+                <button>Edit</button>
+              </div>
+              <div className="">
+                <button>Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+     )
+     :
+     (
+       <div className="">
+       <span>No questions added yet!</span>
+     </div>
+     )
+    }
+      
     </>
   )
 }

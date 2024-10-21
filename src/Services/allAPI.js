@@ -10,3 +10,8 @@ export const admloginAPI=async(users)=>{
 export const addQuestionAPI=async(question)=>{
     return await commonAPI('POST',`${BASE_URL}/general/pot/add`,question,"")
 }
+
+// Getting arith pot questions
+export const getArithQuestionAPI = async(question)=>{
+    return await commonAPI('GET',`${BASE_URL}/general/arith/pot`)
+}
