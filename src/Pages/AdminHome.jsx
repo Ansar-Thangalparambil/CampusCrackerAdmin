@@ -26,10 +26,10 @@ function AdminHome() {
          </Link>
   
           <Link to={'/subtopicshome'} state={{data:{
-          route1:'/potformulas',
-          route1Name:'Problems On Train - Formulas',
-          route2:'/potquestions',
-          route2Name:'Problems on Train - Questions'
+          route1:'/verbformulas',
+          route1Name:'Verbal Reasoning - Formulas',
+          route2:'/verbquestions',
+          route2Name:'Verbal Reasoning - Questions'
          }}}>
             <div className="verbal-sec">
               <h4>Verbal Reasoning</h4>

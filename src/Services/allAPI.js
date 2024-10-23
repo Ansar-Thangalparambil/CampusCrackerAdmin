@@ -17,6 +17,6 @@ export const getArithQuestionAPI = async()=>{
 }
 
 //Editing questions
-export const editQuestionAPI = async(qId,editQuestions) =>{
-    return await commonAPI('PUT',`${BASE_URL}/qustion/edit/${qId}`,editQuestions,"")
+export const editQuestionAPI = async(qId,editQuestion) =>{
+    return await commonAPI('PUT',`${BASE_URL}/question/edit/${qId}`,editQuestion,"")
 }

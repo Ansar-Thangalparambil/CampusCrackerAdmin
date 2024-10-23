@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addQuestionAPI, getArithQuestionAPI } from '../Services/allAPI';
 import EditQuestions from './EditQuestions';
+import { editQuestionResponseContext } from '../Context/Contextshare';
 // import Dropdown from 'react-bootstrap/Dropdown';
 
 function PoTQuestions() {
+
+  const {editResponse} = useContext(editQuestionResponseContext)
   
   const [qstn,setQstn] = useState({
     section_name:"Arithmetic_aptitude",
@@ -94,14 +97,14 @@ function PoTQuestions() {
   }
 
   //for initially rendering the data when the page loads.
-  useEffect(()=>{
-    getPotQuestions();
-  },[])
+  // useEffect(()=>{
+  //   getPotQuestions();
+  // },[])
 
-  //for re-rendering the data when a new question is added.
+  //for re-rendering the data when a new question is added. the data will also display when the page initially render.
   useEffect(()=>{
     getPotQuestions();
-  },[qstnAdded])
+  },[qstnAdded,editResponse])
 
   //
  
