@@ -12,6 +12,11 @@ export const addQuestionAPI=async(question)=>{
 }
 
 // Getting arith pot questions
-export const getArithQuestionAPI = async(question)=>{
+export const getArithQuestionAPI = async()=>{
     return await commonAPI('GET',`${BASE_URL}/general/arith/pot`)
+}
+
+//Editing questions
+export const editQuestionAPI = async(qId,editQuestion) =>{
+    return await commonAPI('PUT',`${BASE_URL}/question/edit/${qId}`,editQuestion,"")
 }

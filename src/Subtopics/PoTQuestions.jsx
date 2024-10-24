@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addQuestionAPI, getArithQuestionAPI } from '../Services/allAPI';
+import EditQuestions from './EditQuestions';
+import { editQuestionResponseContext } from '../Context/Contextshare';
 // import Dropdown from 'react-bootstrap/Dropdown';
 
 function PoTQuestions() {
+
+  const {editResponse} = useContext(editQuestionResponseContext)
   
   const [qstn,setQstn] = useState({
     section_name:"Arithmetic_aptitude",
@@ -78,7 +82,7 @@ function PoTQuestions() {
       }
     }catch(err){
       console.log(`Request failed due to ${err}`);
-      alert('Oops something went wrong!')
+      alert('Oops!? something went wrong!')
       
     }
       
@@ -93,16 +97,16 @@ function PoTQuestions() {
   }
 
   //for initially rendering the data when the page loads.
+  // useEffect(()=>{
+  //   getPotQuestions();
+  // },[])
+
+  //for re-rendering the data when a new question is added. the data will also display when the page initially render.
   useEffect(()=>{
     getPotQuestions();
-  },[],[qstnAdded])
+  },[qstnAdded,editResponse])
 
-  //for re-rendering the data when a new question is added.
-  useEffect(()=>{
-    getPotQuestions();
-  },[qstnAdded])
-
-  //for deleting the question
+  //
  
   return (
     <>
@@ -198,7 +202,7 @@ function PoTQuestions() {
             </div>
             <div className="d-flex">
               <div className="">
-                <button>Edit</button>
+                <EditQuestions potqns = {item}/>
               </div>
               <div className="">
                 <button>Delete</button>
