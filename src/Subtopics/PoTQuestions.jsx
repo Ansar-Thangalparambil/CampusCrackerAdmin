@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { addQuestionAPI, getArithQuestionAPI } from '../Services/allAPI';
+import { addQuestionAPI, deleteQuestionAPI, getArithQuestionAPI } from '../Services/allAPI';
 import EditQuestions from './EditQuestions';
 import { editQuestionResponseContext } from '../Context/Contextshare';
 // import Dropdown from 'react-bootstrap/Dropdown';
@@ -96,17 +96,26 @@ function PoTQuestions() {
     setPotQuestions(result.data)
   }
 
-  //for initially rendering the data when the page loads.
-  // useEffect(()=>{
-  //   getPotQuestions();
-  // },[])
-
   //for re-rendering the data when a new question is added. the data will also display when the page initially render.
   useEffect(()=>{
     getPotQuestions();
   },[qstnAdded,editResponse])
 
-  //
+  //for deleting a question
+  const handleDelete = async(id) =>{
+    const confMsg = window.confirm("Are you sure!?")
+    if(confMsg){
+      const result = await deleteQuestionAPI(id,qstn)
+      console.log(result);
+      if(result.status === 200){
+        getPotQuestions()
+      }else{
+        console.log(result.response.data);
+      
+      }
+    }
+    
+  }
  
   return (
     <>
@@ -205,7 +214,7 @@ function PoTQuestions() {
                 <EditQuestions potqns = {item}/>
               </div>
               <div className="">
-                <button>Delete</button>
+                <button onClick={()=>handleDelete(item._id)}>Delete</button>
               </div>
             </div>
           </div>

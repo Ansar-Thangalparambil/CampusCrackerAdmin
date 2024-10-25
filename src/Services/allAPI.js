@@ -20,3 +20,8 @@ export const getArithQuestionAPI = async()=>{
 export const editQuestionAPI = async(qId,editQuestion) =>{
     return await commonAPI('PUT',`${BASE_URL}/question/edit/${qId}`,editQuestion,"")
 }
+
+//delete question
+export const deleteQuestionAPI = async(qId,deleteQuestion) =>{
+    return await commonAPI('DELETE',`${BASE_URL}/question/remove/${qId}`,deleteQuestion,"")
+}
