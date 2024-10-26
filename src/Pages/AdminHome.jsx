@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getUsersAPI } from '../Services/allAPI'
 
 function AdminHome() {
+
+  //function for viewing users
+
+  const [users,setUsers] = useState([])
+
+  const getUsers = async()=>{
+    const result = await getUsersAPI()
+    console.log(result.data);
+    setUsers(result.data)
+  }
+
+  useEffect(()=>{
+    getUsers()
+  },[])
+
   return (
     <>
       <div className="totalUsers p-4 border border-dark">
-        <h2>Total Users : 123</h2>
+        <h2>Total Users :{users.length}</h2>
       </div>
       <div className="admTools">
         <div>
