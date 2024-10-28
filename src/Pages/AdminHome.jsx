@@ -30,23 +30,63 @@ function AdminHome() {
         <div className='gen-verb d-flex justify-content-around'>
           {/* When you want to pass data along with the route, you can use the state prop. This method is useful when you have complex data (like objects or arrays) that you don’t want to serialize in the URL.
           here we are passing a state in link to subtopicshome.jsx page  */}
-         <Link to={'/subtopicshome'} state={{data:{
-          route1:'/potformulas',
-          route1Name:'Problems On Train - Formulas',
-          route2:'/potquestions',
-          route2Name:'Problems on Train - Questions'
-         }}}>
+         <Link to={'/subtopicshome'} state={{data:[
+            {
+              route:'/potformulas',
+              routeName:'Problems On Train - Formulas',
+              section_name:'Arithmetic_aptitude',
+              category:'PoTFormulas'
+            },
+            {
+              route:'/generalquestions',
+              routeName:'Problems on Train - Questions',
+              section_name:'Arithmetic_aptitude',
+              category:'PoT'
+            },
+            {
+              route:'/generalquestions',
+              routeName:'Profit and Loss',
+              section_name:'Arithmetic_aptitude',
+              category:'ProfitLoss'
+            },
+            {
+              route:'/generalquestions',
+              routeName:'Problems on Ages',
+              section_name:'Arithmetic_aptitude',
+              category:'ProblemsAges'
+            },
+            {
+              route:'/generalquestions',
+              routeName:'Time and works',
+              section_name:'Arithmetic_aptitude',
+              category:'TimeWorks'
+            },
+            {
+              route:'/generalquestions',
+              routeName:'Height and Distance',
+              section_name:'Arithmetic_aptitude',
+              category:'HeightDistance'
+            }
+          ]
+         }
+         }>
             <div className="general-sec">
               <h4>General Aptitude</h4>
             </div>
          </Link>
   
-          <Link to={'/subtopicshome'} state={{data:{
-          route1:'/verbformulas',
-          route1Name:'Verbal Reasoning - Formulas',
-          route2:'/verbquestions',
-          route2Name:'Verbal Reasoning - Questions'
-         }}}>
+          <Link to={'/subtopicshome'} state={{data:[
+            {
+              route:'/verbformulas',
+              routeName:'Verbal Reasoning - Formulas'
+            },
+            {
+              route:'/verbquestions',
+              routeName:'Verbal Reasoning - Questions'
+            }
+          ]
+        }
+        }>
             <div className="verbal-sec">
               <h4>Verbal Reasoning</h4>
     
