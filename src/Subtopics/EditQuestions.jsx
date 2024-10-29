@@ -4,54 +4,54 @@ import Modal from 'react-bootstrap/Modal';
 import { editQuestionAPI } from '../Services/allAPI';
 import { editQuestionResponseContext } from '../Context/Contextshare';
 
-function EditQuestions({potqns}) {
+function EditQuestions({qnInfos}) {
 
     const {setEditResponse} = useContext(editQuestionResponseContext)
 
-    const[editPotQuestion,setEditPotQuestion] = useState({
-        section_name:"Arithmetic_aptitude",
-        category:"PoT",
-        id:potqns._id,
-        question:potqns.question,
-        option_a:potqns.option_a,
-        option_b:potqns.option_b,
-        option_c:potqns.option_c,
-        option_d:potqns.option_d,
-        answer:potqns.answer,
-        explanation:potqns.explanation
+    const[editQuestion,setEditQuestion] = useState({
+        section_name:qnInfos.section_name,
+        category:qnInfos.category,
+        id:qnInfos._id,
+        question:qnInfos.question,
+        option_a:qnInfos.option_a,
+        option_b:qnInfos.option_b,
+        option_c:qnInfos.option_c,
+        option_d:qnInfos.option_d,
+        answer:qnInfos.answer,
+        explanation:qnInfos.explanation
 
     })
 
     //state to store original question
-    const [initialQstn, setInitialQstn] = useState(editPotQuestion)
+    const [initialQstn, setInitialQstn] = useState(editQuestion)
 
     const [show, setShow] = useState(false);
 
     useEffect(()=>{
-        setInitialQstn(editPotQuestion);
+        setInitialQstn(editQuestion);
     },[show])
 
     const handleShow = () => setShow(true);
 
     const handleCancel = ()=>{
-        setEditPotQuestion({
-          section_name:"Arithmetic_aptitude",
-          category:"PoT",
-        question:potqns.question,
-        option_a:potqns.option_a,
-        option_b:potqns.option_b,
-        option_c:potqns.option_c,
-        option_d:potqns.option_d,
-        answer:potqns.answer,
-        explanation:potqns.explanation,
-        id:potqns._id
+        setEditQuestion({
+          section_name:qnInfos.section_name,
+          category:qnInfos.category,
+        question:qnInfos.question,
+        option_a:qnInfos.option_a,
+        option_b:qnInfos.option_b,
+        option_c:qnInfos.option_c,
+        option_d:qnInfos.option_d,
+        answer:qnInfos.answer,
+        explanation:qnInfos.explanation,
+        id:qnInfos._id
 
         })
       }
 
       const handleClose = () => {
         // Compare the current editPotQuestion with the initialPotQuestion to detect changes
-        if (JSON.stringify(editPotQuestion) === JSON.stringify(initialQstn)) {
+        if (JSON.stringify(editQuestion) === JSON.stringify(initialQstn)) {
           setShow(false); // No changes, close the modal
         } else {
           // Changes detected, show confirmation dialog
@@ -66,13 +66,13 @@ function EditQuestions({potqns}) {
 
     const handleUpdate = async(e)=>{
         e.preventDefault()
-        const{id,question,option_a,option_b,option_c,option_d,answer,explanation} = editPotQuestion
+        const{id,question,option_a,option_b,option_c,option_d,answer,explanation} = editQuestion
         
         if(!question || !option_a || !option_b || !option_c || !option_d || !answer || !explanation){
             alert('Please fill all the fields!')
         } else{
             try {
-                const result = await editQuestionAPI(id,editPotQuestion)
+                const result = await editQuestionAPI(id,editQuestion)
 
                 if(result.status === 200){
                     alert('Updated successfully')
@@ -106,24 +106,24 @@ function EditQuestions({potqns}) {
           <div className="totalform row">
             <div className="col-md-6">
                 <div >
-                    <textarea name='question' id='question' className='form-control' placeholder='Enter question' value={editPotQuestion.question} onChange={(e)=>setEditPotQuestion({...editPotQuestion,question:e.target.value})}/>
+                    <textarea name='question' id='question' className='form-control' placeholder='Enter question' value={editQuestion.question} onChange={(e)=>setEditQuestion({...editQuestion,question:e.target.value})}/>
                 </div>
                 <div className="options">
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>A</span>
-                        <input type="text" className='form-control' placeholder='Option A' value={editPotQuestion.option_a} onChange={(e)=>setEditPotQuestion({...editPotQuestion,option_a:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option A' value={editQuestion.option_a} onChange={(e)=>setEditQuestion({...editQuestion,option_a:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>B</span>
-                        <input type="text" className='form-control' placeholder='Option B' value={editPotQuestion.option_b} onChange={(e)=>setEditPotQuestion({...editPotQuestion,option_b:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option B' value={editQuestion.option_b} onChange={(e)=>setEditQuestion({...editQuestion,option_b:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>C</span>
-                        <input type="text" className='form-control' placeholder='Option C' value={editPotQuestion.option_c} onChange={(e)=>setEditPotQuestion({...editPotQuestion,option_c:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option C' value={editQuestion.option_c} onChange={(e)=>setEditQuestion({...editQuestion,option_c:e.target.value})}/>
                     </div>
                     <div className="option-one d-flex gap-2">
                         <span className='d-flex align-items-center'>D</span>
-                        <input type="text" className='form-control' placeholder='Option D' value={editPotQuestion.option_d} onChange={(e)=>setEditPotQuestion({...editPotQuestion,option_d:e.target.value})}/>
+                        <input type="text" className='form-control' placeholder='Option D' value={editQuestion.option_d} onChange={(e)=>setEditQuestion({...editQuestion,option_d:e.target.value})}/>
                     </div>
                 </div>
             </div>
@@ -138,17 +138,17 @@ function EditQuestions({potqns}) {
                     {/* <i class="fa-solid fa-caret-down"></i> */}
                     {/* </Dropdown.Toggle> */}
 
-                    <select value={editPotQuestion.answer}  onChange={(e)=>setEditPotQuestion({...editPotQuestion,answer:e.target.value})}>
+                    <select value={editQuestion.answer}  onChange={(e)=>setEditQuestion({...editQuestion,answer:e.target.value})}>
                         <option href="#/action-1" value="">Choose one</option>
-                        <option href="#/action-1" value={editPotQuestion.option_a}>{editPotQuestion.option_a}</option>
-                        <option href="#/action-2" value={editPotQuestion.option_b}>{editPotQuestion.option_b}</option>
-                        <option href="#/action-3" value={editPotQuestion.option_c}>{editPotQuestion.option_c}</option>
-                        <option href="#/action-4" value={editPotQuestion.option_d}>{editPotQuestion.option_d}</option>
+                        <option href="#/action-1" value={editQuestion.option_a}>{editQuestion.option_a}</option>
+                        <option href="#/action-2" value={editQuestion.option_b}>{editQuestion.option_b}</option>
+                        <option href="#/action-3" value={editQuestion.option_c}>{editQuestion.option_c}</option>
+                        <option href="#/action-4" value={editQuestion.option_d}>{editQuestion.option_d}</option>
                     </select>
                 {/* </Dropdown> */}
                 </div>
                 <div>
-                    <textarea name="explanation" id="explanation" placeholder='Write the explanation here.' className='form-control' rows={7} value={editPotQuestion.explanation} onChange={(e)=>setEditPotQuestion({...editPotQuestion,explanation:e.target.value})}></textarea>
+                    <textarea name="explanation" id="explanation" placeholder='Write the explanation here.' className='form-control' rows={7} value={editQuestion.explanation} onChange={(e)=>setEditQuestion({...editQuestion,explanation:e.target.value})}></textarea>
                 </div>
             </div>
           </div>

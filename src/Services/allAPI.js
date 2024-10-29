@@ -8,12 +8,12 @@ export const admloginAPI=async(users)=>{
 
 //Adding new question API
 export const addQuestionAPI=async(question)=>{
-    return await commonAPI('POST',`${BASE_URL}/general/pot/add`,question,"")
+    return await commonAPI('POST',`${BASE_URL}/general/arith/add`,question,"")
 }
 
-// Getting arith pot questions
-export const getArithQuestionAPI = async()=>{
-    return await commonAPI('GET',`${BASE_URL}/general/arith/pot`)
+// Getting general questions
+export const getGeneralQuestionAPI = async(sectionName,categoryName)=>{
+    return await commonAPI('GET',`${BASE_URL}/general/${sectionName}/${categoryName}`) 
 }
 
 //Editing questions
