@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Login.css'
+import './Css/Login.css'
 import { admloginAPI } from '../Services/allAPI'
 import { useNavigate } from 'react-router-dom'
 
