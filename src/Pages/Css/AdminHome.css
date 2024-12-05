@@ -2,7 +2,7 @@
 body{
     background-color: #0E0E0E;
     font-family: "Poppins", sans-serif;
-    padding: 25px 30px;
+    padding: 25px 30px 10px;
     color: #fff4de;
 }
 
@@ -66,30 +66,115 @@ body{
 .all-users-col{
     padding-left:5rem ;
 }
-.all-users{
+.all-users, .general-aptitude{
     background-color: #1E1E1E;
     border-radius: 20px;
     
 }
-.total-users span{
+.total-users span, .general span, .verbal span,.topperformers span{
     font-size: 21px;
     font-weight: 700;
 }
 
 .user-count h2{
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 500;
 }
 
-.view-all-users-btn{
+.view-all-users-btn, .view-topics-btn{
     background-color: #fff4de;
     border-radius: 10px;
     color: #1E1E1E;
 }
-.view-all-users-btn span{
-    font-size: 17.5px;
+.view-all-users-btn span, .view-topics-btn span, .verbal-view-topics-btn span{
+    font-size: 17px;
     font-weight: 600;
 }
-.view-all-users-btn i{
+.view-all-users-btn i, .view-topics-btn i, .verbal-view-topics-btn i{
     transform: rotate(-45deg);
+}
+
+/* General - Verbal */
+.verbal-reasoning{
+    background-color: #fff4de;
+    border-radius: 20px;
+}
+
+.verbal-icon{
+    background-color: #1E1E1E;
+    color: #fff4de;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+}
+
+.verbal span{
+    color: #1E1E1E;
+}
+
+.verbal-view-topics-btn{
+    background-color: #1E1E1E;
+    border-radius: 10px;
+}
+
+
+.verbal-view-topics-btn i{
+    transform: rotate(-45deg);
+}
+
+.verbal-view-topics-btn{
+    color: #fff4de;
+}
+
+.links{
+    text-decoration: none;
+}
+
+/* Top performers */
+
+.top-performers{
+    background-color: #1E1E1E;
+    border-radius: 20px;
+}
+
+.performer-pfp{
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.performer-pfp img{
+    width: 63px;
+    height: 63px;
+}
+
+.pfp-rank{
+    position: relative;
+}
+
+.performer-rank{
+    background-color: #1E1E1E;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    left: -9px;
+}
+
+.performer-rank span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.perf-name{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.infos{
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
 }
