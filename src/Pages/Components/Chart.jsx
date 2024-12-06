@@ -4,11 +4,11 @@ import React from 'react'
 function Chart() {
 
     const data1 = [
-        { label: 'Arithmetic Aptitude', value: 400, color:'#FF9BAA' },
-        { label: 'Verbal Ability', value: 300, color:'#D12938' },
-        { label: 'Logical Reasoning', value: 300, color:'#AA0211' },
-        { label: 'Verbal Reasoning', value: 200, color:'#6F0000' },
-        { label: 'Non - verbal Reasoning', value: 500, color:'#3F0000' }
+        { label: 'Arithmetic Aptitude', value: 71, color:'#FF9BAA' },
+        { label: 'Verbal Ability', value: 400, color:'#D12938' },
+        { label: 'Logical Reasoning', value: 150, color:'#AA0211' },
+        { label: 'Verbal Reasoning', value: 35, color:'#6F0000' },
+        { label: 'Non - verbal Reasoning', value: 130, color:'#3F0000' }
       ];
 
   return (
@@ -73,8 +73,8 @@ function Chart() {
                     series={[
                         {
                             innerRadius: 30,
-                            outerRadius: 90,
-                            paddingAngle: 4,
+                            outerRadius: 100,
+                            paddingAngle: 3,
                             cornerRadius: 5,
                             startAngle: -45,
                             endAngle: 225,

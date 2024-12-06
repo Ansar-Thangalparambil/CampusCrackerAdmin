@@ -213,6 +213,104 @@ body{
     font-weight: 400;
 }
 
+.barchart line{
+    stroke: white !important;
+}
+
+.barchart tspan{
+    fill: white !important;
+}
+
 .pie path {
     stroke: none !important; /* Remove the border */
+}
+
+/* Review and Footer */
+
+.reviews{
+    background-color: #1E1E1E;
+    border-radius: 20px;
+}
+
+.reviews-title span{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.s1 svg path,.s2 svg path,.s3 svg path,.s4 svg path{
+    fill: #FFD700;
+    stroke: #FFF4DE;
+    stroke-width: 1.2;
+}
+.s5 svg path{
+    fill: none;
+    stroke: #FFF4DE;
+    stroke-width: 1.2; 
+}
+
+.review-user-img{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.review-user-img img{
+    width: 40px;
+    height: 40px;
+}
+
+.rev-username span{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.review span{
+    font-size: 13px;
+    font-weight: 400;
+    /* text-align: justify; */
+}
+
+.viewallbtn button{
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #FFF4DE;
+    border-radius: 10px;
+}
+
+.viewallbtn i{
+    transform: rotate(-45deg);
+}
+
+/* Footer */
+
+.footer{
+    background-color: #FFF4DE;
+    border-radius: 20px;
+}
+
+.foot-icon img{
+    width: 46px;
+    height: 46px;
+}
+
+.foot-credits{
+    color: #1E1E1E;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.credits{
+    color: #1E1E1E;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.brandname{
+    font-family: "Karantina", system-ui !important;
+    font-weight: 600 !important;
+    color: #0E0E0E;
+    font-size: 17px;
 }

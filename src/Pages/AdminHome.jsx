@@ -4,8 +4,11 @@ import { getUsersAPI } from '../Services/allAPI'
 import './Css/AdminHome.css'
 import cclogo from '../Assets/CcLogo.png'
 import pfp from '../Assets/dpcut.jpeg'
+import footLogo from '../Assets/footLogo.png'
 import TopPerformers from './Components/TopPerformers'
 import Chart from './Components/Chart'
+import Review from './Components/Review'
+import Footer from './Components/Footer'
 
 function AdminHome() {
 
@@ -234,6 +237,25 @@ function AdminHome() {
 
 
             </div>
+
+          </div>
+
+          {/* Review and Footer */}
+          <div className="col-md-3 d-flex flex-column gap-3">
+            
+            {/* Reviews */}
+            <div className="reviews p-3">
+
+              <Review pfp={pfp}/>   
+
+            </div>
+            
+            {/* Footer */}
+            <footer>
+
+              <Footer footLogo={footLogo}/>
+
+            </footer>
 
           </div>
 

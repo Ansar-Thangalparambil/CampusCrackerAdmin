@@ -45,7 +45,7 @@ const dataSeries = [
                 {/* Graph */}
                 <div className="graph">
                     <BarChart
-                        className='p-0 m-0'
+                        className='p-0 m-0 barchart'
                         width={260}
                         height={250}
                         series={dataSeries} // Provide all series here
@@ -78,7 +78,7 @@ const dataSeries = [
                             <img src={pfp.pfp} alt="Profile_Picture" />
                         </div>
                         <div className="performer-rank d-flex align-items-center justify-content-center">
-                            <span>1</span>
+                            <span>2</span>
                         </div>
                     </div>
         
@@ -93,7 +93,7 @@ const dataSeries = [
                 {/* Graph */}
                 <div className="graph">
                     <BarChart
-                        className='p-0 m-0'
+                        className='p-0 m-0 barchart'
                         width={260}
                         height={250}
                         series={dataSeries} // Provide all series here
