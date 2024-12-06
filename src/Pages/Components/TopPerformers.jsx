@@ -5,11 +5,11 @@ function TopPerformers(pfp) {
 
 // Data for each category
 const dataSeries = [
-      { data: [9], color: '#FF9BAA', id: 'math' },
-      { data: [7],  color: '#D12938', id: 'science' },
-      { data: [8], color: '#AA0211', id: 'english' },
-      { data: [6],  color: '#6F0000', id: 'history' },
-      { data: [10],  color: '#3F0000', id: 'art' },
+      { data: [9], color: '#FF9BAA', id: 'aa',label:'Arithmetic Aptitude' },
+      { data: [7],  color: '#D12938', id: 'va',label:'Verbal Ability' },
+      { data: [8], color: '#AA0211', id: 'lr',label:'Logical Reasoning' },
+      { data: [6],  color: '#6F0000', id: 'vr',label:'Verbal Reasoning' },
+      { data: [10],  color: '#3F0000', id: 'nvr',label:'Non - verbal Reasoning' },
     ];
     
     // X-axis categories (since each series only has one data point, these will align visually)
@@ -28,6 +28,7 @@ const dataSeries = [
                         <div className="performer-pfp">
                             <img src={pfp.pfp} alt="Profile_Picture" />
                         </div>
+                        
                         <div className="performer-rank d-flex align-items-center justify-content-center">
                             <span>1</span>
                         </div>
@@ -56,6 +57,9 @@ const dataSeries = [
                                 },
                             ]}
                         // yAxis={[{ label: 'Marks' }]} // Y-axis with label
+                        slotProps={{
+                            legend: { hidden: true },
+                        }}
                     />
                 </div>
 
@@ -101,6 +105,9 @@ const dataSeries = [
                                 },
                             ]}
                         // yAxis={[{ label: 'Marks' }]} // Y-axis with label
+                        slotProps={{
+                            legend: { hidden: true },
+                        }}
                     />
                 </div>
         

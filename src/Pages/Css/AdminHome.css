@@ -178,3 +178,41 @@ body{
     font-weight: 500;
     font-style: italic;
 }
+
+/* Pie chart */
+
+.pie-chart{
+    background-color: #1E1E1E;
+    border-radius: 20px;
+}
+
+.squarebox{
+    width: 31px;
+    height: 31px;
+    border-radius: 8px;
+}
+
+.sq1{
+    background-color: #FF9BAA;
+}
+.sq2{
+    background-color: #D12938;
+}
+.sq3{
+    background-color: #AA0211;
+}
+.sq4{
+    background-color: #6F0000;
+}
+.sq5{
+    background-color: #3F0000;
+}
+
+.leg-name span{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.pie path {
+    stroke: none !important; /* Remove the border */
+}
