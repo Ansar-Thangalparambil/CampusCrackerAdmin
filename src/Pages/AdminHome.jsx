@@ -9,6 +9,9 @@ import TopPerformers from './Components/TopPerformers'
 import Chart from './Components/Chart'
 import Review from './Components/Review'
 import Footer from './Components/Footer'
+import Titlebar from './Components/Titlebar'
+import Overview from './Components/Overview'
+import AllUsers from './Components/AllUsers'
 
 function AdminHome() {
 
@@ -68,25 +71,8 @@ function AdminHome() {
   return (
     <div >
       {/* Title bar */}
-      <div className="title-bar d-flex justify-content-between px-4 py-3">
-
-        <div className="titles d-flex gap-2">
-          <div className="title-cc ">
-            <h2 className='m-0'>CampusCracker</h2>
-          </div>
-          <div className="title-db d-flex align-items-center">
-            <h2 className='m-0'>DASHBOARD</h2>
-          </div>
-        </div>
-
-        <div className="profile-btn d-flex align-items-center justify-content-center">
-          <div className="icons d-flex align-items-center flex-column fs-5 mb-1">
-          <i class="fa-solid fa-user mb-1"></i>
-          <i class="fa-solid fa-ellipsis-vertical"></i>
-          </div>
-        </div>
-
-      </div>
+      
+      <Titlebar/>
 
       {/* Main dashboard */}
       <main>
@@ -95,43 +81,12 @@ function AdminHome() {
         <div className="row mt-3 mb-3">
 
           {/* Overview */}
-          <div className="col-md-4 ps-4 pe-0">
-            <div className="overview">
-              <div className="logo">
-                <img src={cclogo} alt="Logo" />
-              </div>
-
-              <div className="tagline">
-                <h2 className='m-0'>
-                "Welcome! Inspiring academic <span>excellence</span> through structured tests and resources."
-                </h2>
-              </div>
-            </div>
-          </div>
+          
+          <Overview cclogo={cclogo}/>
 
           {/* All Users */}
-          <div className="col-md-3 all-users-col">
-            <div className="all-users p-3">
-              <div className="users-icon profile-btn d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-users fs-5"></i>
-              </div>
-
-              <div className="total-users mt-1">
-                <span>Total Users :</span>
-              </div>
-
-              <div className="user-count text-center">
-                <h2 className='m-0'>
-                  {users.length}
-                </h2>
-              </div>
-
-              <div className="view-all-users-btn p-2 px-3 d-flex justify-content-between" role='button'>
-                <span>View All Users</span>
-                <i class="fa-solid fa-arrow-right fs-5"></i>
-              </div>
-            </div>
-          </div>
+          
+          <AllUsers users={users}/>
 
           {/* Pie Chart */}
           <div className="col-md-5">
@@ -262,6 +217,7 @@ function AdminHome() {
         </div>
 
       </main>
+      
     </div>
   )
 }
